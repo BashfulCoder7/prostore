@@ -19,10 +19,18 @@ const AddToCart = ({ cart, item }: { cart?: Cart; item: CartItem }) => {
     startTransition(async () => {
       const res = await addItemToCart(item);
   
-      if (!res || !res.success) {
+      // if (!res || !res.success) {
+      //   toast({
+      //     variant: "destructive",
+      //     description: res ? res.message : "An unknown error occurred",
+      //   });
+      //   return;
+      // }
+
+      if (!res.success) {
         toast({
           variant: "destructive",
-          description: res ? res.message : "An unknown error occurred",
+          description: res.message,
         });
         return;
       }
